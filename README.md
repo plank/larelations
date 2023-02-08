@@ -1,68 +1,33 @@
-# :package_description
+# Analyze the relations on a given Laravel model
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-<!--delete-->
----
-This repo can be used to scaffold a Laravel package. Follow these steps to get started:
+![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/plank/larelations?color=%234ccd98&label=php&logo=php&logoColor=%23fff)
+![Laravel Version Support](https://img.shields.io/badge/laravel-9.x,%2010.x-%2343d399?logo=laravel&logoColor=%23ffffff)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/plank/larelations.svg?color=%234ccd98&style=flat-square)](https://packagist.org/packages/plank/larelations)
+[![Total Downloads](https://img.shields.io/packagist/dt/plank/larelations.svg?color=%234ccd98&style=flat-square)](https://packagist.org/packages/plank/larelations)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/plank/larelations/Tests?color=%234ccd98&label=Tests&logo=github&logoColor=%23fff)](https://github.com/plank/larelations/actions?query=workflow%3ATests)
+[![Code Climate coverage](https://img.shields.io/codeclimate/coverage/plank/larelations?color=%234ccd98&label=test%20coverage&logo=code-climate&logoColor=%23fff)](https://codeclimate.com/github/plank/larelations/test_coverage)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/plank/larelations?color=%234ccd98&label=maintainablility&logo=code-climate&logoColor=%23fff)](https://codeclimate.com/github/plank/larelations/maintainability)
 
-1. Press the "Use this template" button at the top of this repo to create a new repo with the contents of this skeleton.
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files.
-3. Have fun creating your package.
-4. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
-<!--/delete-->
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+This package is designed to extract all of the Relations from a given Model using reflection and parsing the code.
 
 ## Support us
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/:package_name.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/:package_name)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://plank.co/about-us). We publish all received postcards on [our virtual postcard wall](https://plank.co/open-source/postcards).
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag=":package_slug-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag=":package_slug-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag=":package_slug-views"
+composer require plank/larelations
 ```
 
 ## Usage
 
 ```php
-$variable = new VendorName\Skeleton();
-echo $variable->echoPhrase('Hello, VendorName!');
+$larelations = new Plank\Larelations\RelationExtractor();
+$relations = $larelations->extact($post);
+$relations = Larelations::extact(Post::class);
 ```
 
 ## Testing
@@ -85,7 +50,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [Kurt Friars](https://github.com/kfriars)
 - [All Contributors](../../contributors)
 
 ## License
