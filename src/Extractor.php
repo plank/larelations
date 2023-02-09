@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Collection;
 use ReflectionClass;
+use ReflectionIntersectionType;
 use ReflectionMethod;
+use ReflectionNamedType;
+use ReflectionUnionType;
 
 class Extractor
 {
@@ -36,11 +39,60 @@ class Extractor
             return false;
         }
 
-        if ($returnType = $method->getReturnType()) {
-            return is_a($returnType->getName(), Relation::class, true);
+        if ($method->getReturnType()) {
+            return $this->returnsRelation($method);
         }
 
         return true;
+    }
+
+    protected function returnsRelation(ReflectionMethod $method): bool
+    {
+        $returnType = $method->getReturnType();
+
+        if ($returnType === null) {
+            return false;
+        }
+
+        switch (get_class($returnType)) {
+            case ReflectionNamedType::class:
+                return $this->namedReturnIsRelation($returnType);
+
+            case ReflectionUnionType::class:
+                return $this->unionReturnIsRelation($returnType);
+
+            case ReflectionIntersectionType::class:
+                return $this->intersectionReturnIsRelation($returnType);
+        }
+
+        return false;
+    }
+
+    protected function unionReturnIsRelation(ReflectionUnionType $returnType): bool
+    {
+        foreach ($returnType->getTypes() as $union) {
+            if (! $this->namedReturnIsRelation($union)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    protected function intersectionReturnIsRelation(ReflectionIntersectionType $returnType): bool
+    {
+        foreach ($returnType->getTypes() as $union) {
+            if ($this->namedReturnIsRelation($union)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    protected function namedReturnIsRelation(ReflectionNamedType $returnType): bool
+    {
+        return is_a($returnType->getName(), Relation::class, true);
     }
 
     protected function toImplementedRelation(Model $model, ReflectionMethod $method): ?ImplementedRelation
