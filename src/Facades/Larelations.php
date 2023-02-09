@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Facade;
 use Plank\Larelations\ImplementedRelation;
 
 /**
- * @see \Plank\Larelations\RelationExtractor
+ * @see \Plank\Larelations\Extractor
  *
  * @method static void addRelation(class-string<Relation> $relation)
  * @method static void addRelations(array<class-string<Relation>> $relations)
@@ -18,6 +18,6 @@ class Larelations extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \Plank\Larelations\RelationExtractor::class;
+        return \Plank\Larelations\Extractor::class;
     }
 }

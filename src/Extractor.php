@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 use ReflectionClass;
 use ReflectionMethod;
 
-class RelationExtractor
+class Extractor
 {
     /**
      * @param  Model|class-string<Model>  $model

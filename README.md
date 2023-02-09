@@ -25,7 +25,7 @@ composer require plank/larelations
 ## Usage
 
 ```php
-$extractor = new Plank\Larelations\RelationExtractor();
+$extractor = new Plank\Larelations\Extractor();
 $relations = $extractor->extract($post);
 $relations = Larelations::extract(Post::class);
 ```
