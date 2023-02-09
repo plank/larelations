@@ -3,14 +3,16 @@
 namespace Plank\Larelations\Facades;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Facade;
+use Plank\Larelations\ImplementedRelation;
 
 /**
  * @see \Plank\Larelations\RelationExtractor
  *
  * @method static void addRelation(class-string<Relation> $relation)
  * @method static void addRelations(array<class-string<Relation>> $relations)
- * @method static array<Relation> extract(Model|class-string<Model> $model)
+ * @method static Collection<ImplementedRelation> extract(Model|class-string<Model> $model)
  */
 class Larelations extends Facade
 {
