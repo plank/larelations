@@ -28,15 +28,11 @@ class RelationExtractor
 
     protected function hasRelationSignature(ReflectionMethod $method): bool
     {
-        if (! $method->isPublic() || $method->isStatic()) {
-            return false;
-        }
-
-        if (count($method->getParameters())) {
-            return false;
-        }
-
-        if ($method->class === Model::class) {
+        if (! $method->isPublic()
+            || $method->isStatic()
+            || count($method->getParameters())
+            || $method->class === Model::class
+        ) {
             return false;
         }
 
