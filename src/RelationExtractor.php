@@ -12,7 +12,7 @@ class RelationExtractor
 {
     /**
      * @param  Model|class-string<Model>  $model
-     * @return array<Relation>
+     * @return Collection<ImplementedRelation>
      */
     public function extract(Model|string $model): Collection
     {
