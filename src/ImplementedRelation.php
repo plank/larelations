@@ -8,8 +8,8 @@ use ReflectionMethod;
 class ImplementedRelation
 {
     public function __construct(
-        public ReflectionMethod $method,
-        public Relation $relation
+        public readonly ReflectionMethod $method,
+        public readonly Relation $relation
     ) {
     }
 }
