@@ -56,7 +56,7 @@ class Extractor
             case ReflectionIntersectionType::class:
                 return $this->intersectionReturnIsRelation($returnType);
 
-            case ReflectionNamedType::class:
+            default:
                 return $this->namedReturnIsRelation($returnType);
         }
     }
