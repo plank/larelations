@@ -2,4 +2,6 @@
 
 namespace Plank\Larelations\Tests\Support\Contracts;
 
-interface ContractTwo {}
+interface ContractTwo
+{
+}
