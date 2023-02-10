@@ -16,7 +16,7 @@ class Extractor
 {
     /**
      * @param  Model|class-string<Model>  $model
-     * @return Collection<ImplementedRelation>
+     * @return Collection<RelationInstance>
      */
     public function extract(Model|string $model): Collection
     {
@@ -25,7 +25,7 @@ class Extractor
 
         return (new Collection($class->getMethods()))
             ->filter(fn (ReflectionMethod $method) => $this->hasRelationSignature($method))
-            ->map(fn (ReflectionMethod $method) => $this->toImplementedRelation($model, $method))
+            ->map(fn (ReflectionMethod $method) => $this->toRelationInstance($model, $method))
             ->filter()
             ->values();
     }
@@ -88,7 +88,7 @@ class Extractor
         return is_a($returnType->getName(), Relation::class, true);
     }
 
-    protected function toImplementedRelation(Model $model, ReflectionMethod $method): ?ImplementedRelation
+    protected function toRelationInstance(Model $model, ReflectionMethod $method): ?RelationInstance
     {
         try {
             $relation = @$model->{$method->getName()}();
@@ -97,7 +97,7 @@ class Extractor
         }
 
         if ($relation instanceof Relation) {
-            return new ImplementedRelation($method, $relation);
+            return new RelationInstance($method, $relation);
         }
 
         return null;

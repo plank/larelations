@@ -25,9 +25,22 @@ composer require plank/larelations
 ## Usage
 
 ```php
-$extractor = new Plank\Larelations\Extractor();
-$relations = $extractor->extract($post);
-$relations = Larelations::extract(Post::class);
+$extractor = new \Plank\Larelations\Extractor();
+$instances = $extractor->extract($post);
+$instances = \Plank\Larelations\Facades\Larelations::extract(Post::class);
+
+foreach ($instances as $instance) {
+    if ($instance->isChild()) {
+        // Handle child types of relations
+    }
+
+    if ($instance->relation instanceof \Znck\Eloquent\Traits\BelongsToThrough) {
+        // Handle custom relation
+    }
+
+    // The method property is the \ReflectionMethod of the relation instance
+    $instance->method->getName(); // posts
+}
 ```
 
 ## Testing
