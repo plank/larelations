@@ -9,6 +9,7 @@ use ReflectionClass;
 use ReflectionIntersectionType;
 use ReflectionMethod;
 use ReflectionNamedType;
+use ReflectionType;
 use ReflectionUnionType;
 
 class Extractor
@@ -39,33 +40,25 @@ class Extractor
             return false;
         }
 
-        if ($method->getReturnType()) {
-            return $this->returnsRelation($method);
+        if ($returnType = $method->getReturnType()) {
+            return $this->returnsRelation($returnType);
         }
 
         return true;
     }
 
-    protected function returnsRelation(ReflectionMethod $method): bool
+    protected function returnsRelation(ReflectionType $returnType): bool
     {
-        $returnType = $method->getReturnType();
-
-        if ($returnType === null) {
-            return false;
-        }
-
         switch (get_class($returnType)) {
-            case ReflectionNamedType::class:
-                return $this->namedReturnIsRelation($returnType);
-
             case ReflectionUnionType::class:
                 return $this->unionReturnIsRelation($returnType);
 
             case ReflectionIntersectionType::class:
                 return $this->intersectionReturnIsRelation($returnType);
-        }
 
-        return false;
+            case ReflectionNamedType::class:
+                return $this->namedReturnIsRelation($returnType);
+        }
     }
 
     protected function unionReturnIsRelation(ReflectionUnionType $returnType): bool
