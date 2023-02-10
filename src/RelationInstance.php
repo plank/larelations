@@ -24,18 +24,18 @@ class RelationInstance
 
     public function isChild()
     {
-        return is_a($this->relation, HasOne::class)
-            || is_a($this->relation, HasMany::class)
-            || is_a($this->relation, HasManyThrough::class)
-            || is_a($this->relation, MorphOne::class)
-            || is_a($this->relation, HasOneThrough::class)
-            || is_a($this->relation, MorphMany::class);
+        return $this->relation instanceof HasOne
+            || $this->relation instanceof HasMany
+            || $this->relation instanceof HasManyThrough
+            || $this->relation instanceof MorphOne
+            || $this->relation instanceof HasOneThrough
+            || $this->relation instanceof MorphMany;
     }
 
     public function isParent()
     {
-        return is_a($this->relation, BelongsTo::class)
-            || is_a($this->relation, MorphTo::class);
+        return $this->relation instanceof BelongsTo
+            || $this->relation instanceof MorphTo;
     }
 
     public function isPivot()
@@ -45,8 +45,8 @@ class RelationInstance
 
     public function isThrough()
     {
-        return is_a($this->relation, HasManyThrough::class)
-            || is_a($this->relation, HasOneThrough::class);
+        return $this->relation instanceof HasManyThrough
+            || $this->relation instanceof HasOneThrough;
     }
 
     public function isPolymorphic()
