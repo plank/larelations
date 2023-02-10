@@ -1,9 +1,9 @@
 # Larelations
 
-![Laravel Version Support](https://img.shields.io/badge/laravel-9.x,%2010.x-%3fa281?logo=laravel&logoColor=%23fff)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/plank/larelations/run-tests.yml?branch=main&&color=%3fa281&label=run-tests&logo=github&logoColor=%23fff)](https://github.com/plank/larelations/actions?query=workflow%3Arun-tests)
-[![Code Climate coverage](https://img.shields.io/codeclimate/coverage/plank/larelations?color=%3fa281&label=test%20coverage&logo=code-climate&logoColor=%23fff)](https://codeclimate.com/github/plank/larelations/test_coverage)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/plank/larelations?color=%3fa281&label=maintainablility&logo=code-climate&logoColor=%23fff)](https://codeclimate.com/github/plank/larelations/maintainability)
+![Laravel Version Support](https://img.shields.io/badge/laravel-9.x,%2010.x-%233fa281?logo=laravel&logoColor=%23fff)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/plank/larelations/run-tests.yml?branch=main&&color=%233fa281&label=run-tests&logo=github&logoColor=%23fff)](https://github.com/plank/larelations/actions?query=workflow%3Arun-tests)
+[![Code Climate coverage](https://img.shields.io/codeclimate/coverage/plank/larelations?color=%233fa281&label=test%20coverage&logo=code-climate&logoColor=%23fff)](https://codeclimate.com/github/plank/larelations/test_coverage)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/plank/larelations?color=%233fa281&label=maintainablility&logo=code-climate&logoColor=%23fff)](https://codeclimate.com/github/plank/larelations/maintainability)
 
 This package is designed to extract Eloquent Relations from a given Model using reflection and return type checking.
 
