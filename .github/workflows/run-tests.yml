@@ -90,7 +90,7 @@ jobs:
         run: composer show -D
 
       - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v3.2.0
+        uses: paambaati/codeclimate-action@v4.0.0
         env:
           CC_TEST_REPORTER_ID: b262bf42b23114fb5fdc27bec3a95627f3a1d84a1a0442cb7268556801cd2a10
         with:
